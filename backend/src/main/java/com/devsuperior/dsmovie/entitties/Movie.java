@@ -1,12 +1,15 @@
 package com.devsuperior.dsmovie.entitties;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,19 +24,13 @@ public class Movie implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(name="title")
 	private String title;
-	
-	@Column(name="score")
-	private Double score;
-	
-	@Column(name="count")
+	private Double score;	
 	private Integer count;
-	
-	@Column(name="image")
 	private String image;
 	
+	@OneToMany(mappedBy = "id.movie",fetch = FetchType.EAGER)
+	private Set<Score> scores = new HashSet<>();
 	
 	public Movie() {
 		
@@ -86,5 +83,11 @@ public class Movie implements Serializable{
 	public void setImage(String image) {
 		this.image = image;
 	}
+
+	public Set<Score> getScores() {
+		return scores;
+	}
+
+	
 	
 }

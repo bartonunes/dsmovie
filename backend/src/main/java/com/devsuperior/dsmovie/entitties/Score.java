@@ -18,7 +18,7 @@ public class Score implements Serializable{
 	private ScorePk id = new ScorePk();
 	private Double value;
 
-	private Score() {
+	public Score() {
 	}
 	
 	/*associar filme com o score*/
