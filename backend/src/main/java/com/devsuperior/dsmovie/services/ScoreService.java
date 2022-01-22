@@ -48,12 +48,12 @@ public class ScoreService {
 		
 		score = scoreRepository.saveAndFlush(score);
 		
-		double soma=0.0;
+		Double soma=0.0;
 		for(Score s : movie.getScores()) {
 			 soma += s.getValue();
 		}
 		
-		double media = soma/movie.getScores().size();
+		Double media = soma/movie.getScores().size();
 		
 		movie.setScore(media);
 		movie.setCount(movie.getScores().size());
